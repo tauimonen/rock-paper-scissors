@@ -11,21 +11,6 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function getPlayerChoice() {
-    validUserInput = false;
-    while (!validUserInput) {
-        let playerSelection = prompt("Enter your choice (rock, paper, scissors):");
-        let selection = playerSelection.toLowerCase();
-        if (playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors") {
-            validUserInput = true;
-            return selection;
-        } else {
-            console.log("Invalid input, please enter valid input.");
-            validUserInput = false;
-        }
-    }
-}
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "Tie!";
@@ -43,22 +28,6 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = getPlayerChoice();
-        let computerSelection = getComputerChoice();
-
-        console.log("Yor choice: " + playerSelection + ", Computer's choice: " + computerSelection);
-        const res = playRound(playerSelection, computerSelection);
-        console.log(res);
-        if (res === 'You won!') {
-            playerScore += 1;
-        } else if (res === 'You lose!') {
-            computerScore += 1;
-        }
-        if (i < 4) {
-            console.log("Scores: You: " + playerScore + " Computer: " + computerScore);
-        }
-    }
 
     console.log("Result: You: " + playerScore + " Computer: " + computerScore);
     
@@ -71,7 +40,23 @@ function game() {
     }
 }
 
-game();
+const rockBtn = document.getElementById("rock");
+const paperBtn = document.getElementById("paper");
+const scissorsBtn = document.getElementById("scissors");
+
+rockBtn.addEventListener("click", e => {
+    console.log(e.target);
+});
+
+paperBtn.addEventListener("click", e => {
+    console.log(e.target);
+});
+
+scissorsBtn.addEventListener("click", e => {
+    console.log(e.target);
+});
+
+
 
 
 
