@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     const rndInt = Math.floor(Math.random() * 3) + 1;
     let computerChoice = "";
@@ -11,50 +14,50 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+function disableButtons() {
+    buttons.forEach(button => {
+        button.disabled = true
+    })
+}
+
 function playRound(playerSelection, computerSelection) {
+    let winner = "";
     if (playerSelection === computerSelection) {
-        return "Tie!";
+        console.log("Tie!");
     } else if ((playerSelection === "rock" && computerSelection === "scissors") ||
                 (playerSelection === "paper" && computerSelection === "rock") ||
                 (playerSelection === "scissors" && computerSelection === "paper")) {
-        return "You won!";
+        console.log("Player won!");
+        playerScore++;
     } else if ((playerSelection === "rock" && computerSelection === "paper") ||
                 (playerSelection === "paper" && computerSelection === "scissors") ||
                 (playerSelection === "scissors" && computerSelection === "rock")) {
-        return "You lose!";
+        console.log("Computer won!");            
+        computerScore++;
     }
+
+    console.log("player: " + playerScore + ", computer: " + computerScore);
+
+    if (playerScore === 5 || computerScore === 5) {
+        if (playerScore === 5) {winner = "Player";}
+        else if (computerScore === 5) {winner = "Computer";}
+
+        console.log(winner + " won the game!")
+        disableButtons();
+    } 
 }
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
+const buttons = document.querySelectorAll('button')
+console.log("Start game by pressing button")
 
-    console.log("Result: You: " + playerScore + " Computer: " + computerScore);
-    
-    if (playerScore > computerScore) {
-        console.log("You won the game!");
-    } else if (playerScore < computerScore) {
-        console.log("Computer won the game!");
-    } else {
-        console.log("Tie game!")
-    }
-}
+buttons.forEach(button =>{
+    button.addEventListener('click', function(){
+        playRound(button.id, getComputerChoice());
+    })
+})
 
-const rockBtn = document.getElementById("rock");
-const paperBtn = document.getElementById("paper");
-const scissorsBtn = document.getElementById("scissors");
 
-rockBtn.addEventListener("click", e => {
-    console.log(e.target);
-});
 
-paperBtn.addEventListener("click", e => {
-    console.log(e.target);
-});
-
-scissorsBtn.addEventListener("click", e => {
-    console.log(e.target);
-});
 
 
 
