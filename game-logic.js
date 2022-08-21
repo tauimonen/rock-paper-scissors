@@ -20,6 +20,13 @@ function disableButtons() {
     })
 }
 
+function setScores() {
+    let pScore = document.getElementById('playerScore');
+    let cScore = document.getElementById('computerScore');
+    pScore.innerHTML = playerScore;
+    cScore.innerHTML = computerScore;
+}
+
 function playRound(playerSelection, computerSelection) {
     let winner = "";
     if (playerSelection === computerSelection) {
@@ -37,6 +44,7 @@ function playRound(playerSelection, computerSelection) {
     }
 
     console.log("player: " + playerScore + ", computer: " + computerScore);
+    setScores();
 
     if (playerScore === 5 || computerScore === 5) {
         if (playerScore === 5) {winner = "Player";}
@@ -49,12 +57,16 @@ function playRound(playerSelection, computerSelection) {
 
 const buttons = document.querySelectorAll('button')
 console.log("Start game by pressing button")
+setScores();
 
 buttons.forEach(button =>{
     button.addEventListener('click', function(){
         playRound(button.id, getComputerChoice());
     })
 })
+
+
+
 
 
 
