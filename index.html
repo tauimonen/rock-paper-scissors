@@ -9,11 +9,12 @@
 
   </head>
   <body>
-    <h1>Rock, paper, scissors</h1>
+    <header><h1>Rock, paper, scissors</h1></header>
+    
     <div class="container">
-      <button id="rock">R</button>
-      <button id="paper">P</button>
-      <button id="scissors">S</button>
+      <button class="choice-button" id="rock">ROCK</button>
+      <button class="choice-button" id="paper">PAPER</button>
+      <button class="choice-button" id="scissors">SCISSORS</button>
     </div>
     <div class="display">
       <div id="playerScore" value=""></div>
@@ -23,5 +24,7 @@
       <div id="player">Player</div>
       <div id="computer">Computer</div>
     </div>
+    <div class="game-info"></div>
+    <button onclick="showOrHideNewGameButton()" class="new-game">NEW GAME</button>
   </body>
   <script src="game-logic.js"></script>

@@ -1,3 +1,23 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+  }
+  
+  html {
+    font: 1em/1.5 "Lato", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+  }
+  
+  body {
+    font-size: 1.3em;
+  }
+  
+
 .container {
     display: flex;
     justify-content: center;
@@ -10,10 +30,26 @@ h1 {
 }
 
 button {
-    width: 100px;
-    height: 100px;
-    
+    width: 150px;
+    height: 150px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 75px;
+    box-shadow: 0 9px #999;
 }
+
+.choice-button:hover {background-color: #3e8e41}
+
+.choice-button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
 
 .display {
     display: flex;
@@ -43,10 +79,33 @@ button {
 
 #player {
     margin-top: -40px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #computer {
     margin-top: -40px;;
     margin-right: -10px;
     margin-left: 30px;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+.game-info {
+    margin:auto;
+    margin-top: 5%;
+    width: 50%;
+    height: 30px;
+    width: 300px;
+    display:block;
+    text-align: center;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.new-game {
+    margin: auto;
+    margin-top: 5%;
+    width: 40%;
+    height: 8%;
+}
+
+.new-game:hover {background-color: #3e8e41}
