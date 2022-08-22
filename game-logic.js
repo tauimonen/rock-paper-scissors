@@ -8,6 +8,10 @@ const variables = {
     gameOver: false
 };
 
+/**
+ * Returns the computer's random selection.
+ * @returns String
+ */
 function getComputerChoice() {
     const rndInt = Math.floor(Math.random() * 3) + 1;
     let computerChoice = "";
@@ -21,18 +25,27 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+/**
+ * Disables the choice buttons when called.
+ */
 function disableButtons() {
     buttons.forEach(button => {
         button.disabled = true;
     })
 }
 
+/**
+ * Enables the choice buttons when called.
+ */
 function enableButtons() {
     buttons.forEach(button => {
         button.disabled = false;
     })
 }
 
+/**
+ * Sets the score to the display.
+ */
 function setScores() {
     let pScore = document.getElementById('playerScore');
     let cScore = document.getElementById('computerScore');
@@ -40,11 +53,20 @@ function setScores() {
     cScore.innerHTML = variables.computerScore;
 }
 
+/**
+ * Sets the game's event information to the screen.
+ */
 function setGameInfo() {
     let gameInfo = document.querySelector('.game-info');
     gameInfo.innerHTML = variables.gameInfoText;
 }
 
+/**
+ * Play a round, call setup functions, and end the game when either player collects 
+ * 5 points.
+ * @param {*} playerSelection String
+ * @param {*} computerSelection String
+ */
 function playRound(playerSelection, computerSelection) {
     let winner = "";
     if (playerSelection === computerSelection) {
@@ -76,6 +98,9 @@ function playRound(playerSelection, computerSelection) {
     } 
 }
 
+/**
+ * Sets the settings for a new game.
+ */
 function setNewGame() {
     variables.gameOver = false;
     showOrHideNewGameButton();
@@ -87,6 +112,10 @@ function setNewGame() {
     enableButtons();
 }
 
+/**
+ * Shows the new game button when the game ends and hides it when a new game starts
+ * and is running.
+ */
 function showOrHideNewGameButton() {
     let x = document.querySelector('.new-game');
     if (variables.gameOver) {
@@ -96,13 +125,14 @@ function showOrHideNewGameButton() {
     }
   }
 
-
+// For choice buttons 
 buttons.forEach(button =>{
     button.addEventListener('click', function(){
         playRound(button.id, getComputerChoice());
     })
 })
 
+// For new game button
 newGame.addEventListener('click', function() {
     setNewGame();
 });
